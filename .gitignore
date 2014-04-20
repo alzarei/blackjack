@@ -10,3 +10,7 @@ release.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+.classpath
+.project
+.settings/
