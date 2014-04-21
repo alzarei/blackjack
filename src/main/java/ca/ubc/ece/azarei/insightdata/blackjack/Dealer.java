@@ -11,6 +11,8 @@ package ca.ubc.ece.azarei.insightdata.blackjack;
  */
 public class Dealer extends Gambler {
 
+	private DealerHand hand;
+
 	/*
 	 * (non-Javadoc)
 	 * @see
@@ -45,6 +47,43 @@ public class Dealer extends Gambler {
 	public boolean stand(Table table) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * @param hand
+	 *            the hand to set
+	 */
+	public void setHand(DealerHand hand) {
+		this.hand = hand;
+	}
+
+	/**
+	 * @return the hand
+	 */
+	public DealerHand getHand() {
+		return hand;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#act(ca.ubc.ece.azarei.insightdata.blackjack
+	 * .Table)
+	 */
+	@Override
+	public boolean act(Table table) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#determineStatus()
+	 */
+	@Override
+	public GamblerStatus determineStatus() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

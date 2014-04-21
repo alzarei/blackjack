@@ -5,9 +5,45 @@
  */
 package ca.ubc.ece.azarei.insightdata.blackjack;
 
+import java.util.ArrayList;
+
 /**
  * @author Alexander Zarei
  */
 public abstract class Hand {
+
+	private ArrayList<Card> visibleCards;
+
+	/**
+	 * @return the visibleCards
+	 */
+	public ArrayList<Card> getVisibleCards() {
+		return visibleCards;
+	}
+
+	/**
+	 * @param visibleCards
+	 *            the visibleCards to set
+	 */
+	public void setVisibleCards(ArrayList<Card> visibleCards) {
+		this.visibleCards = visibleCards;
+	}
+
+	/**
+	 * adds a card to hand. The card will be seen by other users as well.
+	 * 
+	 * @param card
+	 * @return true if the card was added and false if the input was card null.
+	 */
+	public boolean addCard(Card card) {
+
+		if (card == null)
+			return false;
+		else {
+			getVisibleCards().add(card);
+		}
+		return true;
+
+	}
 
 }

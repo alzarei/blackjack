@@ -5,9 +5,32 @@
  */
 package ca.ubc.ece.azarei.insightdata.blackjack;
 
+import java.util.ArrayList;
+
 /**
  * @author Alexander Zarei
  */
 public class DealerHand extends Hand {
+
+	private ArrayList<Card> facedDownCards;
+
+	/**
+	 * @return the facedDownCards
+	 */
+	public ArrayList<Card> getFacedDownCards() {
+		return facedDownCards;
+	}
+
+	/**
+	 * @param facedDownCards
+	 *            the facedDownCards to set
+	 */
+	public void setFacedDownCards(ArrayList<Card> facedDownCards) {
+		this.facedDownCards = facedDownCards;
+	}
+
+	public void addFacedDownCard(Card card) {
+		facedDownCards.add(card);
+	}
 
 }

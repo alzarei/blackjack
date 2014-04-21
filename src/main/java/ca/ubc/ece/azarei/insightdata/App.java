@@ -24,10 +24,10 @@ public class App
 
 		UserInterface ui = new TextUserInterface();
 
-		BlackjackGame bjGame = new BlackjackGame();
+		BlackjackGame bjGame = new BlackjackGame(ui);
 
 		try {
-			bjGame.start();
+			bjGame.play();
 		} catch (BlackjackException e) {
 
 			ui.showOutput(e.getMessage());

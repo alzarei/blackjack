@@ -4,9 +4,84 @@
  */
 package ca.ubc.ece.azarei.insightdata.blackjack;
 
+import java.util.ArrayList;
+
 /**
  * @author Alexander Zarei
  */
-public abstract class Deck {
+public class Deck {
 
+	private ArrayList<Card> cards;
+
+	/**
+     * 
+     */
+	public Deck() {
+
+		this.cards = getA52Deck();
+
+	}
+
+	public boolean isEmpty() {
+		return getCards().isEmpty();
+	}
+
+	/**
+	 * @return all suits in the card deck
+	 */
+	public static CardSuit[] getAllSuits() {
+		return CardSuit.class.getEnumConstants();
+	}
+
+	/**
+	 * @return all ranks in the card deck.
+	 */
+
+	public static CardRank[] getAllRanks() {
+		return CardRank.class.getEnumConstants();
+	}
+
+	public static ArrayList<Card> getA52Deck() {
+
+		ArrayList<Card> aFullOrderedDeck = new ArrayList<Card>(52);
+
+		for (CardSuit s : getAllSuits()) {
+			for (CardRank r : getAllRanks()) {
+				aFullOrderedDeck.add(new Card(s, r));
+			}
+		}
+
+		return aFullOrderedDeck;
+	}
+
+	/**
+	 * @return the cards
+	 */
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
+
+	/**
+	 * @param cards
+	 *            the cards to set
+	 */
+	public void setCards(ArrayList<Card> cards) {
+		this.cards = cards;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+
+		StringBuffer text = new StringBuffer();
+		for (Card card : getCards()) {
+			text.append(card.toString());
+			text.append('\n');
+		}
+
+		return text.toString();
+	}
 }

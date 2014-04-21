@@ -11,15 +11,13 @@ import java.util.Currency;
  */
 public class HumanPlayer extends Player {
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#play(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
+	/**
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#play(ca.ubc.ece.azarei.insightdata.blackjack
+	 *      .Table)
 	 */
 	@Override
 	public boolean play(Table table) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
@@ -79,6 +77,28 @@ public class HumanPlayer extends Player {
 	 */
 	@Override
 	public Currency bet(Table table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#act(ca.ubc.ece.azarei.insightdata.blackjack
+	 *      .Table)
+	 */
+	@Override
+	public boolean act(Table table) {
+
+		String tableStatus = createTablePresentation(table);
+		BlackjackGame.getUi().showOutput(tableStatus);
+
+		return false;
+	}
+
+	/**
+	 * @param table
+	 * @return
+	 */
+	private String createTablePresentation(Table table) {
 		// TODO Auto-generated method stub
 		return null;
 	}
