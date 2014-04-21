@@ -6,10 +6,18 @@ import ca.ubc.ece.azarei.insightdata.blackjack.ui.TextUserInterface;
 import ca.ubc.ece.azarei.insightdata.blackjack.ui.UserInterface;
 
 /**
- * Hello world!
+ * This class is the start point of the application. The program starts execution from the main
+ * method in this class.
  */
 public class App
 {
+
+	/**
+	 * The starting point of execution.
+	 * 
+	 * @param args
+	 *            These are the command line arguments.
+	 */
 	public static void main(String[] args)
 	{
 		System.out.println("Hello World!");
