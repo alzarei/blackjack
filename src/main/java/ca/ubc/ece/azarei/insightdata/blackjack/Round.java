@@ -19,6 +19,7 @@ public class Round {
 	 */
 	public Round(Table table) throws NegativeNumberOfDecksExeption {
 
+		this.table = table;
 		// at the beginning the Deckshoe is filled and shuffled!
 		DeckShoe deckShoe = new DeckShoe(table.getDeckShoe().getNumberOfDecks());
 		deckShoe.shuffle();
@@ -47,6 +48,7 @@ public class Round {
 		for (Player player : table.getPlayers()) {
 			table.setTurn(player);
 			player.play(table);
+
 		}
 
 		table.setTurn(table.getDealer());
@@ -71,10 +73,21 @@ public class Round {
 		}
 
 		Card card1 = table.getDeckShoe().getNextCard();
-		table.getDealer().getHand().addFacedDownCard(card1);
+		((DealerHand) (table.getDealer().getHand())).addFacedDownCard(card1);
 
 		Card card2 = table.getDeckShoe().getNextCard();
 		table.getDealer().getHand().addCard(card2);
+
+	}
+
+	/**
+	 * 
+	 */
+	public void showResults() {
+
+		for (Player player : table.getPlayers()) {
+			player.showResults(table);
+		}
 
 	}
 

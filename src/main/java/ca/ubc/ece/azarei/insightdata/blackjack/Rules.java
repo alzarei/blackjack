@@ -17,4 +17,12 @@ public class Rules {
 		return null;
 	}
 
+	/**
+	 * @param table
+	 */
+	public static void updateStatuses(Table table) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

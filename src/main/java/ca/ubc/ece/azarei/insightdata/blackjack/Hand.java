@@ -7,12 +7,25 @@ package ca.ubc.ece.azarei.insightdata.blackjack;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 /**
  * @author Alexander Zarei
  */
-public abstract class Hand {
+public class Hand {
 
 	private ArrayList<Card> visibleCards;
+	private int handPoints;
+
+	/**
+     * 
+     */
+	public Hand() {
+
+		visibleCards = new ArrayList<Card>();
+
+	}
 
 	/**
 	 * @return the visibleCards
@@ -46,4 +59,37 @@ public abstract class Hand {
 
 	}
 
+	/**
+	 * @return
+	 */
+	public ArrayList<Card> getAllCards() {
+
+		return getVisibleCards();
+	}
+
+	/**
+	 * @param handPoints
+	 *            the handPoints to set
+	 */
+	public void setHandPoints(int handPoints) {
+		this.handPoints = handPoints;
+	}
+
+	/**
+	 * @return the handPoints
+	 */
+	public int getHandPoints() {
+		return handPoints;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).
+		        append("Cards", visibleCards).
+		        toString();
+	}
 }

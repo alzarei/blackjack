@@ -102,7 +102,7 @@ public class TestCard {
 	@Test
 	public void testToString() {
 
-		assertTrue(getCard().toString().equals("Hearts    10"));
+		assertTrue(getCard().toString().equals("Hearts       10"));
 
 	}
 

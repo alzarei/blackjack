@@ -8,7 +8,8 @@ package ca.ubc.ece.azarei.insightdata.blackjack;
  */
 public enum GamblerStatus {
 
-	BUSTED("Went over 21"), BLACKJACK("Blackjack"), CAN_HIT("Still can hit"), STAND("Stand");
+	BUSTED("Went over 21"), BLACKJACK("Blackjack"), CAN_HIT("Still can hit"), STAND("Stand"),
+	WON("Won"), LOST("Lost"), PUSH("Push");
 
 	private final String status;
 

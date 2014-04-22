@@ -3,6 +3,9 @@
  */
 package ca.ubc.ece.azarei.insightdata.blackjack.ui;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 /**
  * @author Alexander Zarei
  */
@@ -14,8 +17,19 @@ public class TextUserInterface extends UserInterface {
 	 */
 	@Override
 	public Object getInput() {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			String input = reader.readLine();
+
+			return input;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.print(e.getMessage());
+			return null;
+
+		}
 	}
 
 	/*
@@ -24,7 +38,8 @@ public class TextUserInterface extends UserInterface {
 	 */
 	@Override
 	public void showOutput(Object output) {
-		// TODO Auto-generated method stub
+
+		System.out.println((String) output);
 
 	}
 
@@ -33,9 +48,10 @@ public class TextUserInterface extends UserInterface {
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.ui.UserInterface#getinput(java.lang.Object)
 	 */
 	@Override
-	public Object getinput(Object message) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object getInput(Object output) {
+
+		showOutput(output);
+		return getInput();
 	}
 
 }

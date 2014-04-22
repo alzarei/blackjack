@@ -7,6 +7,9 @@ package ca.ubc.ece.azarei.insightdata.blackjack;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 import ca.ubc.ece.azarei.insightdata.blackjack.expetions.NegativeNumberOfDecksExeption;
 
 /**
@@ -28,6 +31,7 @@ public class Table {
 	 */
 	public Table(int numberOfPlayers, int numberOfDecks) throws NegativeNumberOfDecksExeption {
 
+		players = new ArrayList<>();
 		dealer = new Dealer();
 		for (int i = 0; i < numberOfPlayers; i++) {
 
@@ -98,5 +102,22 @@ public class Table {
 	 */
 	public void setTurn(Gambler gambler) {
 		this.turn = gambler;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).
+		        append("Dealer", dealer).
+		        append("Players", players).
+		        append("turn", ((Player) turn).getId()).
+		        toString();
+	}
+
+	public String tableRepresentation() {
+		return "Current state of the game is:\n" + this.toString();
 	}
 }

@@ -12,8 +12,15 @@ import ca.ubc.ece.azarei.insightdata.blackjack.ui.UserInterface;
  */
 public class BlackjackGame {
 
+	private static final int numberOfUsers = 1;
+	private static final int numberOfDecks = 3;
 	private static UserInterface UI;
 	private Table table;
+
+	public static final int TWIENTY_ONE = 21;
+	public static final int FACE_OR_TEN_RANK_VALUE = 10;
+	public static final int ACE_OFFSET = 10;
+	public static final int SOFT_HAND_LIMIT = 11;
 
 	/**
 	 * This constructor gets the user interface and builds the game. It asks for number of players
@@ -23,8 +30,10 @@ public class BlackjackGame {
 	public BlackjackGame(UserInterface userInteface) {
 		setUi(userInteface);
 
-		int numberOfUsers = (Integer) UI.getinput("Please input the number of players...");
-		int numberOfDecks = (Integer) UI.getinput("Please input the number of Decks...");
+		// numberOfUsers =
+		// Integer.parseInt((String) UI.getInput("Please input the number of players..."));
+		// numberOfDecks =
+		// Integer.parseInt((String) UI.getInput("Please input the number of Decks..."));
 
 		try {
 			table = new Table(numberOfUsers, numberOfDecks);
@@ -41,6 +50,8 @@ public class BlackjackGame {
 		blackjackRound.Bet();
 		blackjackRound.Deal();
 		blackjackRound.play();
+		Rules.updateStatuses(table);
+		blackjackRound.showResults();
 
 		return true;
 	}

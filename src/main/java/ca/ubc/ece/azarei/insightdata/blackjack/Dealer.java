@@ -11,79 +11,34 @@ package ca.ubc.ece.azarei.insightdata.blackjack;
  */
 public class Dealer extends Gambler {
 
-	private DealerHand hand;
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#play(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
-	 */
-	@Override
-	public boolean play(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#hit(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
-	 */
-	@Override
-	public boolean hit(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#stand(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
-	 */
-	@Override
-	public boolean stand(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	private static final int DEALER_AUTO_STAND_LIMIT = 17;
 
 	/**
-	 * @param hand
-	 *            the hand to set
-	 */
-	public void setHand(DealerHand hand) {
-		this.hand = hand;
+     * 
+     */
+	public Dealer() {
+
+		this.setHand(new DealerHand());
+
 	}
 
-	/**
-	 * @return the hand
-	 */
-	public DealerHand getHand() {
-		return hand;
+	@Override
+	public void act(Table table) {
+		try {
+			this.hit(table);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			System.exit(1);
+		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#act(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#getAutoStandLimit()
 	 */
 	@Override
-	public boolean act(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#determineStatus()
-	 */
-	@Override
-	public GamblerStatus determineStatus() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getAutoStandLimit() {
+		return DEALER_AUTO_STAND_LIMIT;
 	}
 
 }

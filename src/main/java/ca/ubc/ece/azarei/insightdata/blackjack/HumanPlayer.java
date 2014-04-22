@@ -12,44 +12,11 @@ import java.util.Currency;
 public class HumanPlayer extends Player {
 
 	/**
-	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#play(ca.ubc.ece.azarei.insightdata.blackjack
+	 * This method is not implemented because the minimal version of the software is not requireded
+	 * to support this. (non-Javadoc)
+	 * 
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Player#split(ca.ubc.ece.azarei.insightdata.blackjack
 	 *      .Table)
-	 */
-	@Override
-	public boolean play(Table table) {
-
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#hit(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
-	 */
-	@Override
-	public boolean hit(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Gambler#stand(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
-	 */
-	@Override
-	public boolean stand(Table table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Player#split(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
 	 */
 	@Override
 	public boolean split(Table table) {
@@ -57,11 +24,12 @@ public class HumanPlayer extends Player {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Player#doubleDown(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
+	/**
+	 * This method is not implemented because the minimal version of the software is not requireded
+	 * to support this. (non-Javadoc)
+	 * 
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Player#doubleDown(ca.ubc.ece.azarei.insightdata.blackjack
+	 *      .Table)
 	 */
 	@Override
 	public boolean doubleDown(Table table) {
@@ -69,11 +37,12 @@ public class HumanPlayer extends Player {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * ca.ubc.ece.azarei.insightdata.blackjack.Player#bet(ca.ubc.ece.azarei.insightdata.blackjack
-	 * .Table)
+	/**
+	 * This method is not implemented because the minimal version of the software is not requireded
+	 * to support this. (non-Javadoc)
+	 * 
+	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Player#bet(ca.ubc.ece.azarei.insightdata.blackjack
+	 *      .Table)
 	 */
 	@Override
 	public Currency bet(Table table) {
@@ -86,21 +55,33 @@ public class HumanPlayer extends Player {
 	 *      .Table)
 	 */
 	@Override
-	public boolean act(Table table) {
+	public void act(Table table) {
 
-		String tableStatus = createTablePresentation(table);
-		BlackjackGame.getUi().showOutput(tableStatus);
+		StringBuffer message = new StringBuffer();
+		message.append(table.tableRepresentation());
+		message.append("\n What would you like to do? Please input \"h\" for Hit or \"s\" for Stand...");
 
-		return false;
-	}
+		// get input from user
+		String input;
+		do {
+			input = (String) BlackjackGame.getUi().getInput(message.toString());
+		} while ((!input.startsWith("S")) && (!input.startsWith("s"))
+		        && (!input.startsWith("H")) && (!input.startsWith("h")));
 
-	/**
-	 * @param table
-	 * @return
-	 */
-	private String createTablePresentation(Table table) {
-		// TODO Auto-generated method stub
-		return null;
+		if (input.startsWith("H") || input.startsWith("h")) {
+			try {
+				this.hit(table);
+			} catch (Exception e) {
+
+				System.err.println(e.getMessage());
+				System.exit(1);
+
+			}
+
+		} else {
+			this.stand(table);
+		}
+
 	}
 
 }

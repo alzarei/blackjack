@@ -10,8 +10,8 @@ public abstract class UserInterface {
 
 	public abstract Object getInput();
 
-	public abstract void showOutput(Object output);
+	public abstract void showOutput(Object message);
 
-	public abstract Object getinput(Object message);
+	public abstract Object getInput(Object message);
 
 }
