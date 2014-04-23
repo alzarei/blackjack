@@ -32,43 +32,46 @@ public abstract class Gambler {
 	}
 
 	/**
+	 * When this is the player or dealers turn this method carries out an act and update the status
+	 * of the player or the dealer
+	 * 
 	 * @param table
-	 * @return
+	 * @return true if the gambler could play correctly, and false otherwise.
 	 */
 	public boolean play(Table table) {
 
 		if (table == null)
 			return false;
 
-		setStatus(determineStatus());
+		updateGamblerStatus();
 		while (status == GamblerStatus.CAN_HIT) {
 			this.act(table);
-			setStatus(determineStatus());
+			updateGamblerStatus();
 		}
 
 		return true;
 	}
 
 	/**
-	 * @return
+	 * This method updates the status of the player as well as the count of the points in her hand.
+	 * This method does this updates solely by looking at what cards are the hand of the player
+	 * 
+	 * @return The updated status of the user
 	 */
 
-	public GamblerStatus determineStatus() {
-		return determineStatusAndSetHandPoints();
-	}
+	public GamblerStatus updateGamblerStatus() {
 
-	/**
-	 * @return
-	 */
-	public GamblerStatus determineStatusAndSetHandPoints() {
+		if (status != GamblerStatus.CAN_HIT) {
+			return status;
+		}
 
-		GamblerStatus status;
 		int pointCount = 0;
 		int aceCount = 0;
 		int faceOrTenCount = 0;
 		ArrayList<Card> allCards = this.getHand().getAllCards();
 		int numberOfcards = allCards.size();
 
+		// Counting the points and the Aces
 		for (Card card : allCards) {
 
 			switch (card.getRank()) {
@@ -118,10 +121,18 @@ public abstract class Gambler {
 				status = GamblerStatus.CAN_HIT;
 			}
 		}
+		// update the points
 		this.getHand().setHandPoints(pointCount);
 		return status;
 	}
 
+	/**
+	 * Takes a card from the deckshoe
+	 * 
+	 * @param table
+	 *            : the current status of the game
+	 * @throws Exception
+	 */
 	public void hit(Table table) throws Exception {
 
 		Card card = table.getDeckShoe().getNextCard();
@@ -129,13 +140,25 @@ public abstract class Gambler {
 			throw new Exception("Deckshoe was Empty!!");
 		}
 		this.getHand().addCard(card);
+		BlackjackGame.getUi().showOutput(String.format("Hit result: %s", card.toString()));
 
 	}
 
+	/**
+	 * sets the status of the Gambler to "stand".
+	 * 
+	 * @param table
+	 */
 	public void stand(Table table) {
 		this.setStatus(GamblerStatus.STAND);
 	}
 
+	/**
+	 * Carries out an action based on the status of the dealer or the will of a human player or the
+	 * strategies of a machine player.
+	 * 
+	 * @param table
+	 */
 	public abstract void act(Table table);
 
 	/**
@@ -154,7 +177,8 @@ public abstract class Gambler {
 	}
 
 	/**
-	 * @return
+	 * @return The limit which prevents a gambler from hitting (21 or above for player and 17 or
+	 *         above for dealer)
 	 */
 	public abstract int getAutoStandLimit();
 
@@ -186,4 +210,5 @@ public abstract class Gambler {
 		        toString();
 
 	}
+
 }

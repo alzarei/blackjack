@@ -15,11 +15,16 @@ import org.apache.commons.lang.builder.ToStringStyle;
  */
 public class DealerHand extends Hand {
 
+	/**
+	 * Dealer hides his first card. This is designed as an array so it could be extended in future
+	 * versions. We will introduce a new version of Blackjack in which the dealer hides multiple
+	 * cards!!
+	 */
 	private ArrayList<Card> facedDownCards;
 
 	/**
-     * 
-     */
+	 * the constructor
+	 */
 	public DealerHand() {
 
 		facedDownCards = new ArrayList<Card>();
@@ -40,12 +45,16 @@ public class DealerHand extends Hand {
 		this.facedDownCards = facedDownCards;
 	}
 
+	/**
+	 * @param card
+	 */
 	public void addFacedDownCard(Card card) {
 		facedDownCards.add(card);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * (
+	 * 
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Hand#getAllCards()
 	 */
 	@Override
@@ -58,9 +67,8 @@ public class DealerHand extends Hand {
 		return allCards;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Hand#toString()
+	/**
+	 * Tailored string representation
 	 */
 	@Override
 	public String toString() {

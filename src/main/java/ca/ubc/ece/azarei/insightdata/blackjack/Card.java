@@ -1,6 +1,6 @@
 /**
  * This class models a card in a game card. Cards have suits and ranks. The value of the card is
- * dictate by the game and the state of the game being played.
+ * dictated by the game and the state of the game being played.
  */
 package ca.ubc.ece.azarei.insightdata.blackjack;
 
@@ -36,16 +36,15 @@ public class Card {
 		return suit;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * Overrides java.lang.Object#toString() to provide a tailored String representation!
 	 */
 	@Override
 	public String toString() {
 
 		StringBuffer text = new StringBuffer();
-		text.append(String.format("%-10s", this.suit.toString()));
-		text.append(String.format("%5d", this.rank.getRank()));
+		text.append(String.format("%-9s", this.suit.toString()));
+		text.append(String.format("%-9s", this.rank.toString()));
 
 		return text.toString();
 	}

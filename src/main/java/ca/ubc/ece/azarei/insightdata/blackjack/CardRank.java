@@ -23,4 +23,27 @@ public enum CardRank {
 	public int getRank() {
 		return rank;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
+	@Override
+	public String toString() {
+
+		switch (this) {
+			case ACE:
+				return "Ace";
+			case KING:
+				return "King";
+			case QUEEN:
+				return "Queen";
+			case JACK:
+				return "Jack";
+
+			default:
+				return Integer.toString(rank);
+		}
+
+	}
 }

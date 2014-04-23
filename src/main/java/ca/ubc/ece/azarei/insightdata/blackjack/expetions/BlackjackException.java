@@ -1,11 +1,10 @@
 /**
- * 
+ * This class implements a general Exception for Blackjack game
  */
 package ca.ubc.ece.azarei.insightdata.blackjack.expetions;
 
 /**
  * @author Alexander Zarei
- *
  */
 public abstract class BlackjackException extends Exception {
 
@@ -13,19 +12,18 @@ public abstract class BlackjackException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = -4200956847227120830L;
-	
+
 	public BlackjackException(String message) {
-        super(message);
-    }
+		super(message);
+	}
 
-    public BlackjackException(String message, Throwable throwable) {
-        super(message, throwable);
-    }
-    
-    public String getMessage()
-    {
-        return super.getMessage();
-    }
+	public BlackjackException(String message, Throwable throwable) {
+		super(message, throwable);
+	}
 
+	public String getMessage()
+	{
+		return super.getMessage();
+	}
 
 }

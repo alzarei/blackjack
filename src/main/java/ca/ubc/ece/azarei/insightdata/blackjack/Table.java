@@ -11,6 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 import ca.ubc.ece.azarei.insightdata.blackjack.expetions.NegativeNumberOfDecksExeption;
+import ca.ubc.ece.azarei.insightdata.blackjack.ui.TextUserInterface;
 
 /**
  * @author Alexander Zarei
@@ -31,7 +32,7 @@ public class Table {
 	 */
 	public Table(int numberOfPlayers, int numberOfDecks) throws NegativeNumberOfDecksExeption {
 
-		players = new ArrayList<>();
+		players = new ArrayList<Player>();
 		dealer = new Dealer();
 		for (int i = 0; i < numberOfPlayers; i++) {
 
@@ -117,7 +118,40 @@ public class Table {
 		        toString();
 	}
 
+	/**
+	 * Provides a textual representation of the status of the table so the human players can decide
+	 * what to do when it is their turns.
+	 * 
+	 * @return
+	 */
 	public String tableRepresentation() {
-		return "Current state of the game is:\n" + this.toString();
+
+		int facedDownCardsNumber =
+		        ((DealerHand) (getDealer().getHand())).getFacedDownCards().size();
+
+		StringBuffer tableState = new StringBuffer();
+		tableState.append(TextUserInterface.HORIZENTAL_LINE).
+		        append(TextUserInterface.NEW_LINE).
+		        append(TextUserInterface.HORIZENTAL_LINE).
+		        append(TextUserInterface.NEW_LINE).
+		        append("Current state of the game is:\n").
+		        append("The Dealer's Hand:\n").
+		        append(this.getDealer().getHand().getVisibleCards()).
+		        append(String.format(" and %d faced down card%s.", facedDownCardsNumber,
+		                (facedDownCardsNumber == 1) ? "" : "s")).
+		        append("\n\nYour hand is:\n").
+		        append(this.getTurn().getHand().getVisibleCards());
+
+		if (this.getPlayers().size() > 1) {
+			tableState.append("Other players hands:\n");
+			for (Player player : getPlayers()) {
+				if (player != turn) {
+					tableState.append(player.getHand().getVisibleCards()).append('\n');
+				}
+			}
+
+		}
+
+		return tableState.toString();
 	}
 }

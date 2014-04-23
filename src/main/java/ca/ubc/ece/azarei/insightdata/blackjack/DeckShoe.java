@@ -43,6 +43,9 @@ public class DeckShoe {
 
 	}
 
+	/**
+	 * @return true if the deckshow is empty, and false otherwiseS
+	 */
 	public boolean isEmpty() {
 		return cards.isEmpty();
 	}
@@ -57,6 +60,10 @@ public class DeckShoe {
 		}
 
 	}
+
+	/**
+	 * Shuffles the cards in the DeckShoe
+	 */
 
 	public void shuffle() {
 		Collections.shuffle(cards);

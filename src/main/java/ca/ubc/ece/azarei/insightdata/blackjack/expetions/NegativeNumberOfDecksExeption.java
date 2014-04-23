@@ -1,5 +1,5 @@
 /**
- * 
+ * This Exception is thrown when the value user provides for the number of decks is negative. 
  */
 package ca.ubc.ece.azarei.insightdata.blackjack.expetions;
 

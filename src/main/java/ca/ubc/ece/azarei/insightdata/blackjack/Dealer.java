@@ -22,18 +22,24 @@ public class Dealer extends Gambler {
 
 	}
 
+	/**
+	 * An action: either hit or stand
+	 */
 	@Override
 	public void act(Table table) {
 		try {
+			BlackjackGame.getUi().showOutput("Dealer hit!");
 			this.hit(table);
+			BlackjackGame.getUi().showOutput(
+			        "Dealer's hand: " + this.getHand().getVisibleCards().toString());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			System.exit(1);
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * @return the limit that forces a dealer to stop hitting.
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#getAutoStandLimit()
 	 */
 	@Override

@@ -1,5 +1,5 @@
 /**
- * 
+ * This Exception is thrown when The deck goes out of card. This generally happens when we have many players and only one Deck of card!
  */
 package ca.ubc.ece.azarei.insightdata.blackjack.expetions;
 

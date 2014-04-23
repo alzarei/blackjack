@@ -11,6 +11,10 @@ import java.io.InputStreamReader;
  */
 public class TextUserInterface extends UserInterface {
 
+	public static final String HORIZENTAL_LINE =
+	        "______________________________________________________________________________";
+	public static final String NEW_LINE = "\n";
+
 	/*
 	 * (non-Javadoc)
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.ui.UserInterface#getInput()

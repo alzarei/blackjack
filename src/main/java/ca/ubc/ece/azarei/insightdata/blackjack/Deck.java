@@ -27,6 +27,8 @@ public class Deck {
 	}
 
 	/**
+	 * /** This method is useful in generating all cards in a loop
+	 * 
 	 * @return all suits in the card deck
 	 */
 	public static CardSuit[] getAllSuits() {
@@ -34,6 +36,8 @@ public class Deck {
 	}
 
 	/**
+	 * This method is useful in generating all cards in a loop
+	 * 
 	 * @return all ranks in the card deck.
 	 */
 
@@ -41,6 +45,11 @@ public class Deck {
 		return CardRank.class.getEnumConstants();
 	}
 
+	/**
+	 * Creates all 52 cards and pack them in an ArrayList
+	 * 
+	 * @return A full deck of cards
+	 */
 	public static ArrayList<Card> getA52Deck() {
 
 		ArrayList<Card> aFullOrderedDeck = new ArrayList<Card>(52);

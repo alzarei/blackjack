@@ -1,5 +1,5 @@
 /**
- * 
+ * This enum models various states a player could go to in a Blackjack game
  */
 package ca.ubc.ece.azarei.insightdata.blackjack;
 

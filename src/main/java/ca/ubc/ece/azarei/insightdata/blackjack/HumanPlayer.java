@@ -12,8 +12,8 @@ import java.util.Currency;
 public class HumanPlayer extends Player {
 
 	/**
-	 * This method is not implemented because the minimal version of the software is not requireded
-	 * to support this. (non-Javadoc)
+	 * This method is not implemented because the minimal version of the software is not required to
+	 * support this.
 	 * 
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Player#split(ca.ubc.ece.azarei.insightdata.blackjack
 	 *      .Table)
@@ -51,15 +51,16 @@ public class HumanPlayer extends Player {
 	}
 
 	/**
+	 * This method carries out the acts (hit or stand) that a human player chooses to do.
+	 * 
 	 * @see ca.ubc.ece.azarei.insightdata.blackjack.Gambler#act(ca.ubc.ece.azarei.insightdata.blackjack
 	 *      .Table)
 	 */
 	@Override
 	public void act(Table table) {
-
 		StringBuffer message = new StringBuffer();
 		message.append(table.tableRepresentation());
-		message.append("\n What would you like to do? Please input \"h\" for Hit or \"s\" for Stand...");
+		message.append("\n\nWhat would you like to do? Please input \"h\" for Hit or \"s\" for Stand...");
 
 		// get input from user
 		String input;
@@ -70,6 +71,7 @@ public class HumanPlayer extends Player {
 
 		if (input.startsWith("H") || input.startsWith("h")) {
 			try {
+				BlackjackGame.getUi().showOutput("You hit!");
 				this.hit(table);
 			} catch (Exception e) {
 
@@ -80,6 +82,7 @@ public class HumanPlayer extends Player {
 
 		} else {
 			this.stand(table);
+			BlackjackGame.getUi().showOutput("You stood!");
 		}
 
 	}

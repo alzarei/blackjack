@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+import ca.ubc.ece.azarei.insightdata.blackjack.ui.TextUserInterface;
+
 /**
  * @author Alexander Zarei
  */
@@ -18,7 +20,7 @@ public abstract class Player extends Gambler {
 	private int id;
 	private Currency bet;
 
-	private static final int PPLAYER_AUTO_STANT_LIMIT = 21;
+	private static final int PLAYER_AUTO_STANT_LIMIT = 21;
 
 	/**
      * 
@@ -43,10 +45,12 @@ public abstract class Player extends Gambler {
 	@Override
 	public int getAutoStandLimit() {
 
-		return PPLAYER_AUTO_STANT_LIMIT;
+		return PLAYER_AUTO_STANT_LIMIT;
 	}
 
 	/**
+	 * Shows the game result for an individual player
+	 * 
 	 * @param table
 	 */
 	public void showResults(Table table) {
@@ -58,13 +62,19 @@ public abstract class Player extends Gambler {
 	}
 
 	/**
+	 * Prepares the result message
+	 * 
 	 * @return
 	 */
 	private String createResultMessage() {
 
 		StringBuffer message = new StringBuffer();
 
-		message.append("You ");
+		message.append(TextUserInterface.HORIZENTAL_LINE).
+		        append(TextUserInterface.NEW_LINE).
+		        append(TextUserInterface.HORIZENTAL_LINE).
+		        append(TextUserInterface.NEW_LINE).
+		        append("You ");
 
 		switch (this.getStatus()) {
 			case BLACKJACK:
