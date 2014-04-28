@@ -20,5 +20,35 @@
 		<version>2.6</version>
 	</dependency>
       
+
+
+
+
   </dependencies>
+
+ <build> <plugins>
+			<!-- The Compiler Plugin is used to compile the sources of your project.
+				The default compiler is javac and is used to compile Java sources. Also note
+				that at present the default source setting and default target setting is
+				1.5, independently of the JDK you run Maven with. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin> </plugins> </build>
+
+
+
+
+
+
+
+
+
+
+
 </project>
